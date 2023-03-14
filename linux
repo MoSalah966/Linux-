@@ -1,1 +1,11 @@
 youtube course 
+df >> show partitions 
+lsblk >> to check disks
+fdisk -l  >> to start making a partitions
+fdisk /dev/sdb
+/ m  >> for help
+/ n >> add new partition
+/ p >> primary 
+/ put the partition number
+/ +5 G
+/ 
