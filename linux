@@ -8,4 +8,34 @@ fdisk /dev/sdb
 / p >> primary 
 / put the partition number
 / +5 G
-/ 
+/ p for print and check
+/ w  for write 
+lsblk
+partprobe   > to scan your disks to make kernal know what you add
+partprobe /dev/sdb
+mkfs.ext4 /dev/sdb1   > make filesystem type extend 4 to partition sdb1
+fdisk -l 
+/d   >> to delete
+
+cat /dev/random    >> write too much random data
+cat /dev/random >> /dev/sdb    #uncontrolled process
+dd if=/dev/random of=/dev/sdb bs=1b count=512 
+# disk dumb input file and output file and block size and count to control what and how much you will write
+dd if=/dev/zero of=bigfile bs=1M count=100
+# write a file called bigfile in my current path with 100 mega
+# if it was random not zero it won't be 100 mega it will be less because zero like format
+mkfs.xfs -f /dev/sdb1   # -f here to format any inodes from the previous file system
+mkfs.xfs -f -isize=512 /dev/sdb1  # determine the inode size
+mount /dev/sdb1 /media/
+# mount file system of partition sdb1 in media
+umount /media  
+# to un mount /media and make the partition unaccessable 
+dumpe2fs /dev/sdb1    
+# to get info about the ext partition
+umount /dev/sdb1
+e2fsck /dev/sdb1   
+# check file system partition but only in case it's unmounted
+dd if=/dev/sdb1 of=/sdb1-backup   
+# even if it's corrupted make a backup in a file called sdb1-backup
+dd if=/sdb1-backup of=/dev/sdb1
+# to restore
