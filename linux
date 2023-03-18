@@ -39,3 +39,10 @@ dd if=/dev/sdb1 of=/sdb1-backup
 # even if it's corrupted make a backup in a file called sdb1-backup
 dd if=/sdb1-backup of=/dev/sdb1
 # to restore
+# if you mount twice on same place you have to umount twice also
+mount -t ext4 /dev/sdb1 /media 
+# mount with specify the file system type
+blkid #to show blocks uuid
+mount UUID=xxxxxxx /media/
+e2label /dev/sdb5 oracle
+mount LABEL="oracle" /media
