@@ -46,3 +46,7 @@ blkid #to show blocks uuid
 mount UUID=xxxxxxx /media/
 e2label /dev/sdb5 oracle
 mount LABEL="oracle" /media
+# syntax of /etc/fstab
+# dev   mountpoint  type    mountoptions    dumporder   fs-checkorder
+/dev/sdb5   /media  ext4    defaults             1           1
+mount -a # tell the kernal to mount any thing in fstab
