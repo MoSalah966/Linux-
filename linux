@@ -82,3 +82,6 @@ pstree   #tree of the process
 pgrep firefox  #search for pid
 pkill firefox  #kill with process name
 firefox &  #run this in background
+fg  # fore ground 
+jobs
+fg %1 
