@@ -70,3 +70,15 @@ tar cvf etc-backup.tar      # create verbose means show me what the files you ar
 tar cvfz etc-backup.tar.gz etc/  #archive and compress directory with gzip
 tar cvfj etc-backup.tar.bz2 etc/ #archive and compress directory with bzip2
 tar tvfz etc-backup.tar.gz   # t means list this archiving files
+>>processes<<
+ps 
+ps -a   #running processes from all the shells or all terminals
+ps aux  # all the processes on the system with users pid cpu and mem
+kill 9687 #kill with process ID 
+kill -l   #show all signals 
+kill -9 9687 #signal kill to force killing
+ps -ef | less   #ppid alsso
+pstree   #tree of the process
+pgrep firefox  #search for pid
+pkill firefox  #kill with process name
+firefox &  #run this in background
