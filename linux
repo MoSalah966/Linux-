@@ -47,6 +47,26 @@ mount UUID=xxxxxxx /media/
 e2label /dev/sdb5 oracle
 mount LABEL="oracle" /media
 # syntax of /etc/fstab
+vim /etc/fstab
 # dev   mountpoint  type    mountoptions    dumporder   fs-checkorder
 /dev/sdb5   /media  ext4    defaults             1           1
 mount -a # tell the kernal to mount any thing in fstab
+
+du -hsx * | sort -rh | head -10
+#to get the most biggest file in the path
+cat /etc/mtab  #to copy from it the syntax of the fstab file simce it's the mount tab file
+
+cfdisk /dev/sdb  #showing disks in a different UI
+
+>>compression<<
+gzip  #faster
+bzip2 # higher in compression retio 
+gzip file1
+gunzip file1
+du -sh etc/  # disk usage - summerize human readable to etc
+tar cf etc-backup.tar etc/   #create file archive from etc
+tar xf etc-backup.tar        # extract file 
+tar cvf etc-backup.tar      # create verbose means show me what the files you are archiving now
+tar cvfz etc-backup.tar.gz etc/  #archive and compress directory with gzip
+tar cvfj etc-backup.tar.bz2 etc/ #archive and compress directory with bzip2
+tar tvfz etc-backup.tar.gz   # t means list this archiving files
