@@ -70,6 +70,7 @@ tar cvf etc-backup.tar      # create verbose means show me what the files you ar
 tar cvfz etc-backup.tar.gz etc/  #archive and compress directory with gzip
 tar cvfj etc-backup.tar.bz2 etc/ #archive and compress directory with bzip2
 tar tvfz etc-backup.tar.gz   # t means list this archiving files
+------------------------------------------------------------------
 >>processes<<
 ps 
 ps -a   #running processes from all the shells or all terminals
@@ -85,3 +86,6 @@ firefox &  #run this in background
 fg  # fore ground 
 jobs
 fg %1 
+bg %1
+killall firefox
+# the nice value is from -20 to 19 and the normal is 0 for any process and the highest is -20
