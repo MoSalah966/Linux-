@@ -89,3 +89,22 @@ fg %1
 bg %1
 killall firefox
 # the nice value is from -20 to 19 and the normal is 0 for any process and the highest is -20
+#you can click on k inside top command to kill a process
+nice -n 15 firefox   # give firefox process priority 15
+renice -n -15 11852  #for process that already run and here we mention it with ID
+whereis ls  #search for a command binary and doc
+what is ls  #where is this command
+locate network | less   # search for any file called network or include this word
+# if you add file now, locate command will not find it till a half day of adding this file or you can force with
+updatedb
+
+find /etc/ -name network   #search in etc for network file
+find /etc/ -iname network  #search with insensitive name
+find / -iname network* 
+find /etc/ -perm 755 
+find /home/ -group student   # any file owned by gp student
+find /home/ -user user-1  
+find / -atime +1    #any file accessed since 1 day
+find /etc/ -iname network -exec cp {} work/ \;
+#find network under etc and execute the result at work directory
+# if you want to copy directory add -r
