@@ -70,6 +70,7 @@ tar cvf etc-backup.tar      # create verbose means show me what the files you ar
 tar cvfz etc-backup.tar.gz etc/  #archive and compress directory with gzip
 tar cvfj etc-backup.tar.bz2 etc/ #archive and compress directory with bzip2
 tar tvfz etc-backup.tar.gz   # t means list this archiving files
+------------------------------------------------------------------
 >>processes<<
 ps 
 ps -a   #running processes from all the shells or all terminals
@@ -85,3 +86,61 @@ firefox &  #run this in background
 fg  # fore ground 
 jobs
 fg %1 
+bg %1
+killall firefox
+# the nice value is from -20 to 19 and the normal is 0 for any process and the highest is -20
+#you can click on k inside top command to kill a process
+nice -n 15 firefox   # give firefox process priority 15
+renice -n -15 11852  #for process that already run and here we mention it with ID
+whereis ls  #search for a command binary and doc
+what is ls  #where is this command
+locate network | less   # search for any file called network or include this word
+# if you add file now, locate command will not find it till a half day of adding this file or you can force with
+updatedb
+
+find /etc/ -name network   #search in etc for network file
+find /etc/ -iname network  #search with insensitive name
+find / -iname network* 
+find /etc/ -perm 755 
+find /home/ -group student   # any file owned by gp student
+find /home/ -user user-1  
+find / -atime +1    #any file accessed since 1 day
+find /etc/ -iname network -exec cp {} work/ \;
+#find network under etc and execute the result at work directory
+# if you want to copy directory add -r
+grep root /etc/passwd   # grep the line that contain root word in passwd
+grep -i root /etc/passwd  #insensitive 
+grep word1 file1   # get the word word1 from file1
+grep -v test file1  # give me any line not has test word in file1
+grep -n # give the number of line that has the word 
+grep -R root /etc/ # recursive means in all the path you give it
+cut -f 1 -d : /etc/passwd  
+#give me the field 1 means column 1 with dilemeter means the separation between a
+#column and another is : in /etc/passwd
+cut -f 1,3 -d : /etc/passwd 
+# give me the columns 1 and 3 
+# separation could be anything not just a :
+cut -f 1-3  # give me from column 1 to 3
+cut -f 3 -d : /etc/passwd | sort   #sort put the results in order
+| sort -n  #sort numeric order
+cut -d : -f 7 /etc/passwd | uniq 
+# don't repeat the results
+cut -d : -f 7 /etc | sort | uniq
+>>VIM<<
+n #next result
+N #previous result
+o #enter insert mode with new line under the line you are in 
+O #enter insert above my line
+yy #yank means copy this link
+p # paste whole line
+3 yy #copy three lines > nyy
+dd # cut this line 
+:12  #navigate to line 12
+:set number #numbering the file 
+:set nonumber #cancel numbering
+u # undo 
+dw #delete word
+dl #delete leter
+:7,10d  #delete lines from 7 to 10
+:.,$d  #delete from cursor to end of the file
+. #redo
