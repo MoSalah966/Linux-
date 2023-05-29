@@ -144,4 +144,3 @@ dl #delete leter
 :7,10d  #delete lines from 7 to 10
 :.,$d  #delete from cursor to end of the file
 . #redo
-hhhhhh
