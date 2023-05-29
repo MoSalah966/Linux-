@@ -144,3 +144,13 @@ dl #delete leter
 :7,10d  #delete lines from 7 to 10
 :.,$d  #delete from cursor to end of the file
 . #redo
+gg  #go to the first line
+G  #go to the end of file
+:%s/sync/replicate  #substitute the sync word on cursor in file to replicate 
+:%s/sync/replicate/g #g means global that means subsitute all the words sync to replicate
+:r file1   # put all content in file1 inside this file in the location of the cursor
+:w newfile #write this content in a file called new file
+:w >> exsistingfile # write content inside current file to exsisting file 
+d$ ## erase from the cursor to the end of line
+d0 ## erase from the cursor to the start of the line
+:!command ##to write any command on console when you are inside the file without exit and back again
