@@ -144,7 +144,3 @@ dl #delete leter
 :7,10d  #delete lines from 7 to 10
 :.,$d  #delete from cursor to end of the file
 . #redo
-<<<<<<< HEAD
- 
-=======
->>>>>>> f20158ed902acae062e306cc440235fc2d582453
