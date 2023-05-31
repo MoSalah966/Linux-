@@ -157,3 +157,13 @@ d0 ## erase from the cursor to the start of the line
 :.!command #write the command output inside the file where the cursor point
 yum/apt search httpd   #search for httpd package
 chkconfig crond off = systemctl disable crond
+systemctl get-default # to know what is the default target for systemd >gui or cli
+systemctl set-default multi-user.target # set default to multiuser.target means open CLI
+runlevel #show what is the target number that you are stands on now
+systemctl isolate graphical.target # run graphical target without reboot after i set the cli as default so both now are running
+init 6 # reboot for the machine
+init 0 # power off
+- all the files for systemd are in /usr/lib/systemd/system
+telinit = init
+systemctl list-units # all units files of systemd with status
+
