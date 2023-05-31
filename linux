@@ -166,4 +166,6 @@ init 0 # power off
 - all the files for systemd are in /usr/lib/systemd/system
 telinit = init
 systemctl list-units # all units files of systemd with status
-
+ls /boot/grub2/  #files for bootloader
+less /boot/grub2/grub.config #conf file for bootloader
+fdisk -l /dev/nvme0n1..... #to know which OS installed on which disk
