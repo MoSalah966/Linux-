@@ -157,7 +157,6 @@ d0 ## erase from the cursor to the start of the line
 :.!command #write the command output inside the file where the cursor point
 yum/apt search httpd   #search for httpd package
 chkconfig crond off = systemctl disable crond
-<<<<<<< HEAD
 systemctl is-enabled crond.service #asking is this service is enabled
 systemctl is-active crond
 systemctl poweroff #power off the machine
@@ -176,4 +175,3 @@ systemctl list-units # all units files of systemd with status
 ls /boot/grub2/  #files for bootloader
 less /boot/grub2/grub.config #conf file for bootloader
 fdisk -l /dev/nvme0n1..... #to know which OS installed on which disk
-
