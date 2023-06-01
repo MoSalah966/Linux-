@@ -175,3 +175,26 @@ systemctl list-units # all units files of systemd with status
 ls /boot/grub2/  #files for bootloader
 less /boot/grub2/grub.config #conf file for bootloader
 fdisk -l /dev/nvme0n1..... #to know which OS installed on which disk
+- in case you want to make the time for boot different
+vim /boot/grub2/grub.cfg 
+set timeout=5  #change 5 to ex. 30
+- in case i do wrong writes on the file /etc/grub2.cfg and i want to regenerate it
+grub2-mkconfig -o /boot/grub2/grub.cfg  # -o means output and etc/grub2 will back to its original state
+- in case you want to fix some values in grub2 file in case of regeneration
+vim /etc/sysconfig/grub
+set timeout=5
+grub default=saved #means will choose the first OS if you have 2 and you can change it from saved to 2
+grub2-mkconfig -o /boot/grub2/grub.cfg 
+#if you change anything in this file, it will be fixed in /etc/grub2.cfg even if you run command grub2-mkconfig
+#you have to run grub2-mkconfig after modifying in etc/sysconfig/grub file
+#grub start numbering menuentries from 0 not from 1
+ls -lZ # to show label of every file 
+ls -lZ /etc/passwd
+-------------------------------
+- to reset root pass
+-------------------------------
+reboot
+e  #to edit from boot screen 
+rd.break #in the end of the last line means don't continue boot process
+ctrl+x #to start
+# it will give you a terminal with root access
