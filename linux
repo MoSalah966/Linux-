@@ -206,9 +206,9 @@ reboot
 ------------------------------
 ctrl+alt+delete #reboot the machine and must be disbabled as a best practice 
 - to disabled them:
-cd /usr/lib/systemd/system/
-ls -l | grep -i del 
-vim ctrl-alt-del.target 
+#cd /usr/lib/systemd/system/
+#ls -l | grep -i del 
+#vim ctrl-alt-del.target 
 - disable it with one command: systemctl mask ctrl-alt-del.target
 #this command create symlink from /etc/systemd/system/ctrl-alt-del.target to /dev/null
 systemctl daemon-reload #to reload daemon after masking 
