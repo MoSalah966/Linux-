@@ -164,7 +164,6 @@ systemctl poweroff #power off the machine
 systemctl reboot   #reboot machine
 systemctl mask crond.service  #mask service to make sure it won't start back after restart by itself
 systemctl unmask crond  #unmasking the service
-=======
 systemctl get-default # to know what is the default target for systemd >gui or cli
 systemctl set-default multi-user.target # set default to multiuser.target means open CLI
 runlevel #show what is the target number that you are stands on now
@@ -177,4 +176,4 @@ systemctl list-units # all units files of systemd with status
 ls /boot/grub2/  #files for bootloader
 less /boot/grub2/grub.config #conf file for bootloader
 fdisk -l /dev/nvme0n1..... #to know which OS installed on which disk
->>>>>>> 79b675bc8c188af1ec5a379d8ca168a045086d6e
+
