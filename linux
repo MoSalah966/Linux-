@@ -198,3 +198,9 @@ e  #to edit from boot screen
 rd.break #in the end of the last line means don't continue boot process
 ctrl+x #to start
 # it will give you a terminal with root access
+mount -o remount,rw /sysroot/  #remount option with read write for the file system sysroot
+passwd # to change password
+touch /.autorelabel  # to relabel shadow file in /etc/shadow  after changing the root password
+exit
+reboot
+------------------------------
