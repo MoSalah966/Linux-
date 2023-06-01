@@ -213,3 +213,6 @@ ctrl+alt+delete #reboot the machine and must be disbabled as a best practice
 #this command create symlink from /etc/systemd/system/ctrl-alt-del.target to /dev/null
 systemctl daemon-reload #to reload daemon after masking 
 -------------------------------
+---Network Manager---
+nmcli #open network Manager
+ip addr show = ip a s
