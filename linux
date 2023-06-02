@@ -221,3 +221,8 @@ if down eno03283  #to make this interface disabled
 if up eno03283   # enable interface
 nmcli connection show #show network connection
 nmcli connection show eno03283 #show all network info for this eni 
+nmcli connection delete eno03283 # delte this connenction
+nmcli connection add con-name home ifname eno03283 type ethernet autoconnect yes
+nmcli connection modify home ipv4.addresses 192.168.101.110/24 ipv4.gateway 192.168.101.2 ipv4.dns 8.8.8.8 ipv4.method manual
+nmcli connection down home # disable it to apply modifications
+nmcli connection up home
