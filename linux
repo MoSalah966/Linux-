@@ -219,3 +219,5 @@ ip addr show = ip a s
 ifdown 'interfacename'
 if down eno03283  #to make this interface disabled
 if up eno03283   # enable interface
+nmcli connection show #show network connection
+nmcli connection show eno03283 #show all network info for this eni 
