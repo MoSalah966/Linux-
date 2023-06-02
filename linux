@@ -216,3 +216,6 @@ systemctl daemon-reload #to reload daemon after masking
 ---Network Manager---
 nmcli #open network Manager
 ip addr show = ip a s
+ifdown 'interfacename'
+if down eno03283  #to make this interface disabled
+if up eno03283   # enable interface
