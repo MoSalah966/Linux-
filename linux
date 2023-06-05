@@ -229,3 +229,5 @@ nmcli connection up home
 nmcli connection edit con-name work type wifi #if you want to change the type of connection
 ls /etc/sysconfig/network-scripts/   # files of interfaces config are here
 -------------------------------
+mii-tool eno03283 # tool for knowing the physical link status
+ethtool eno03283  # tool to give info about the modes that supported with you link
