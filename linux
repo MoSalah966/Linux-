@@ -226,3 +226,6 @@ nmcli connection add con-name home ifname eno03283 type ethernet autoconnect yes
 nmcli connection modify home ipv4.addresses 192.168.101.110/24 ipv4.gateway 192.168.101.2 ipv4.dns 8.8.8.8 ipv4.method manual
 nmcli connection down home # disable it to apply modifications
 nmcli connection up home
+nmcli connection edit con-name work type wifi #if you want to change the type of connection
+ls /etc/sysconfig/network-scripts/   # files of interfaces config are here
+-------------------------------
