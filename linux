@@ -237,4 +237,10 @@ ethtool eno03283  # tool to give info about the modes that supported with you li
 nmcli connection mod #connname ipv6.addresses '2001::11:1/64'
 nmcli connection down #connname
 nmcli connection up #connname
+------------------
 ping6  #to ping ipv6
+-to ping link local you have to specify interface
+ping6 fe80::20c:29ff:fead:980f%eno03283   # or with I capital
+ping6 -I eno03283 fe80::20c:29ff:fead:980f
+----------------
+ip -6 route    #show the route table of ipv6
