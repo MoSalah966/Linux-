@@ -244,3 +244,4 @@ ping6 fe80::20c:29ff:fead:980f%eno03283   # or with I capital
 ping6 -I eno03283 fe80::20c:29ff:fead:980f
 ----------------
 ip -6 route    #show the route table of ipv6
+ifconfig  #show non-down interfaces 
