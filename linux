@@ -254,3 +254,4 @@ ip route add 8.8.8.8/32 via 192.168.101.2  #go out to google from this gateway
 ip route del 8.8.8.8/32 via 192.168.101.2
 ip add default  gw 192.168.101.2  # add this ip as the default gateway
 ip route add 10.0.0.0/24 via 192.168.101.106 # go to this network from this gw
+vim /etc/resolv.conf # file that is responsible for resolving DNS
