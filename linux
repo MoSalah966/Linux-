@@ -255,3 +255,9 @@ ip route del 8.8.8.8/32 via 192.168.101.2
 ip add default  gw 192.168.101.2  # add this ip as the default gateway
 ip route add 10.0.0.0/24 via 192.168.101.106 # go to this network from this gw
 vim /etc/resolv.conf # file that is responsible for resolving DNS
+-inside /etc/resolv.conf 
+nameserver 8.8.8.8 
+nameserver 8.8.4.4  # define nameservers inside the file for your machine 
+----------
+vim /etc/hosts # resolv IPs to dns hostnames with serveral names if needed and in the internal network
+
