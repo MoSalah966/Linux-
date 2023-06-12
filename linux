@@ -260,4 +260,11 @@ nameserver 8.8.8.8
 nameserver 8.8.4.4  # define nameservers inside the file for your machine 
 ----------
 vim /etc/hosts # resolv IPs to dns hostnames with serveral names if needed and in the internal network
-
+- the machine will ask etc/hosts firstly before /resolv.conf
+- in /etc/nsswitch.conf  , it defines which file will asked by the machine firstly
+hosts : files dns  # these two must be in nsswtich.conf to be able to ping hosts 
+- to add more than DNS and be stable if there is a reboot in /etc/sysconfig/network-scripts/ifcfg-home 
+nmcli connection modify home +ipv4.dns 8.8.8.8
+--------------
+-in case you disabled network manager, you have to use etc/resolv.conf (if you work with network service)
+systemctl disable NetworkManager 
