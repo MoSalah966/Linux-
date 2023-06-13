@@ -283,3 +283,7 @@ echo test2.salah.com > /proc/sys/kernel/hostname
 -----------------------------------------------------------
 -----NIC Teaming-----
 -NIC Teaming means that we have several ports on the same card and we need to bundle them to increase total traffic 
+-when you have more than one card on the machine 
+nmcli connection add type team con-name teamingnetwork ifname team0 config '{ "runner": {"name": "activebackup"}}'
+nmcli connection add type team-slave con-name team0-slave ifname eno03283 master team0
+#here we add the teaming with config type and after that we add the slave interface and master device 
