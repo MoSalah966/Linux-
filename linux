@@ -268,3 +268,18 @@ nmcli connection modify home +ipv4.dns 8.8.8.8
 --------------
 -in case you disabled network manager, you have to use etc/resolv.conf (if you work with network service)
 systemctl disable NetworkManager 
+--------------------------------
+hostname  #name of your machine 
+hostname -f #fully qualified domain name of your machine
+- to show FQDN you have to put it inside etc/hosts as machine IP and its domain 
+1.1.1.1 salah.machinename.com 
+- to change name of the machine from etc/hostname and put the name you want 
+like prod.salah.com 
+-------------------------
+hostnamectl s  #control status to show status 
+hostnamectl set-hostname test.salah.com # also change the name of the machine and inside the hostname file 
+-another method to change hostname withour rebooting 
+echo test2.salah.com > /proc/sys/kernel/hostname 
+-----------------------------------------------------------
+-----NIC Teaming-----
+-NIC Teaming means that we have several ports on the same card and we need to bundle them to increase total traffic 
