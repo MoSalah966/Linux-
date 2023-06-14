@@ -293,3 +293,7 @@ nmcli connection up team0-slave
 #if you make it down it will makes them down 
 teamdctl team0 state # to show status of the virtual device 
 teamnl team0 ports #show the status of ports of the virtual device 
+teamdctl team0 config dump #showing the configuration of the device in JSON format 
+-to make a priority for one slave to another 
+teamnl team0 options # to show all the options you can use 
+teamnl team0 -p eno03283 setoption priority 100 
