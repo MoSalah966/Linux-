@@ -297,3 +297,20 @@ teamdctl team0 config dump #showing the configuration of the device in JSON form
 -to make a priority for one slave to another 
 teamnl team0 options # to show all the options you can use 
 teamnl team0 -p eno03283 setoption priority 100 
+---------------------------------
+---Network Bridging---
+- we need bridging to determine which physical devices will be controlled by the virtual one
+nmcli connection add type bridge con-name br0 ifname br0 #adding bridge 
+nmcli connection add type bridge-slave ifname eno03283 con-name br0-slave master br0 
+#linking the slave which have the priority with the bridge and make a profile called br0-slave
+#with master (required) br0 which we just created 
+nmcli connection modify br0 ipv4.method manual ipv4.addresses 192.168.101.200/24 
+nmcli connection down br0 
+nmcli connection up br0 
+nmcli connection up br0-slave #must enable slave also 
+brctl show #to show bridged devices 
+- linking bridge with team 
+#to make that link it with the team device rather than the card itself 
+nmcli connection add type bridge-slave ifname team0 con-name br0-slave master br0
+----------------------
+nmtui  #GUI utility to edit anything in your network 
