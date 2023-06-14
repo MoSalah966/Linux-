@@ -312,5 +312,6 @@ brctl show #to show bridged devices
 - linking bridge with team 
 #to make that link it with the team device rather than the card itself 
 nmcli connection add type bridge-slave ifname team0 con-name br0-slave master br0
-----------------------
 nmtui  #GUI utility to edit anything in your network 
+-----------------------------
+----interface naming----
