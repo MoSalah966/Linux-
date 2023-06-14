@@ -337,3 +337,14 @@ systemctl enable network
 cd /etc/sysconfig/network-scripts
 touch ifcfg-eth0 
 vim ifcfg-eth0
+NAME=eth0
+DEVICE=eth0
+BOOTPROTO=static
+IPADDR=x.x.x.x 
+NETMASK=x.x.x.x
+GATEWAY=x.x.x.x
+DNS1=x.x.x.x 
+TYPE=Ethernet 
+esc + :wq 
+systemctl restart network 
+-----------------------------------
