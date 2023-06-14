@@ -315,3 +315,25 @@ nmcli connection add type bridge-slave ifname team0 con-name br0-slave master br
 nmtui  #GUI utility to edit anything in your network 
 -----------------------------
 ----interface naming----
+rpm -qa | grep -i bios #to show package name that called biosdevname 
+-to change name of devices from eno and ens to eth
+reboot 
+e
+biosdevname=0 net.ifnames=0 #at line that has linux16 write this and press ctrlx
+ctrlx #to restart 
+-network manager here will see these interfaces as new ones so we have to do something!
+nmcli connection add type ethernet con-name home ifname eth0 autoconnect yes 
+#delete them and announce them again with the new name and determine which one is ethX with its macaddress
+-if you restart the names will back to origin so how to make them fixed in bootloader!
+vim /etc/grub2.cfg
+#modify in linux16 line as before 
+--------------
+-how to disable network manager?
+systemctl stop NetworkManager.service 
+systemctl disable NetworkManager.service
+systemctl start network 
+systemctl enable network 
+-configure manually using network service 
+cd /etc/sysconfig/network-scripts
+touch ifcfg-eth0 
+vim ifcfg-eth0
