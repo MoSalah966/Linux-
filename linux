@@ -348,3 +348,4 @@ TYPE=Ethernet
 esc + :wq 
 systemctl restart network 
 -----------------------------------
+---setting grub password---
