@@ -435,3 +435,15 @@ whereis nmcli # location of binary and man page files
 -if you want to take sample of any service that is installed, you can take it from /usr/share/doc/ 
 --------------------------
 ---history---
+-there is a file for every user for history called .bash_history, according to which user you are using now 
+vim .bash_history
+history  #every command in the history with numbering order 
+!102 #in case 102 is ls so it will run ls command 
+!-4 #run the forth command from beneath
+history -c  #to delete the history but still exist in .bash_history
+echo $HISTSIZE  #to know the max number of commands to be stored in history 
+ctrlshift+   #make the font bigger in terminal 
+ctrlshiftw   #close current tab in terminal 
+yum install bash-completion # to auto-complete with TAB 
+--------------------------------------------------------
+---RAID---
