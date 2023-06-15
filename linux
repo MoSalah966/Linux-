@@ -349,3 +349,19 @@ esc + :wq
 systemctl restart network 
 -----------------------------------
 ---setting grub password---
+-if the first stage of booting is corrupted you can install grub again by:
+in reboot 
+choose the CDRoom and troubleshooting and rescue mode 
+or esc until you reach boot: and write linux rescue 
+press 1 to continue 
+chroot /mnt/sysimage #to choose the root from disk image itself not the image that created from the disk 
+grub2-install /dev/sda  #installing grub on the sda itself not the partitions 
+-----------------
+-to save the machine from changing the root password from anyone that have a physical access to the machine 
+grub2-setpassword
+xxxx
+xxxx
+grub2-mkconfig -o /boot/grub2/grub.cfg  #to generate again grub file 
+-in this way, no one can edit from boot before entering the password you provided 
+-the command grub2-setpassword will create a file in /boot/grub2/ named user.cfg
+-that have the hashing for the password to strength it.
