@@ -365,3 +365,31 @@ grub2-mkconfig -o /boot/grub2/grub.cfg  #to generate again grub file
 -in this way, no one can edit from boot before entering the password you provided 
 -the command grub2-setpassword will create a file in /boot/grub2/ named user.cfg
 -that have the hashing for the password to strength it.
+----------------
+-manual changing the file to ave the machine from changing the root password from anyone that have a physical access to it
+vim /etc/grub.d/01_users 
+-delete the if condition inside it because it's the if condition that created by the last process
+-of generating grub file 
+-the content will be:
+#!/bin/sh -e 
+cat << E0F
+    set superusers="root"
+    export superusers
+    password root xxxx
+E0F
+:wq
+grub2-mkconfig -o /boot/grub2/grub.cfg  #regenerate it again 
+-this way will make the password plain text in grub file and it's not best way 
+-so how to secure yourself 
+grub2-mkpasswd-pbkdf2 #to create a password encrypted 
+xxxx 
+xxxx
+-copy the hash of your password 
+vim /etc/grub.d/01_users 
+#!/bin/sh -e 
+cat << E0F
+    set superusers="root"
+    export superusers
+    password root "the copied encrypted pass"
+E0F
+:wq
