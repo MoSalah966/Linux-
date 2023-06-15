@@ -422,3 +422,10 @@ man -k date #search in manual on date command
 man -k raid #will guide you to mdadm in chapter 8
 man 8 mdadm  
 man -K raid  # list commands to choose from them which one will do the function you search for 
+-inside the manual
+g >> first line in page 
+G >> last line in page 
+space >> transport page to page 
+/word # to search for word 
+n   # go to the next result
+N   # previous result 
