@@ -413,4 +413,6 @@ grub2-mkconfig -o /boot/grub2/grub.cfg #must regenerate again
 vim /boot/grub2/grub.cfg 
 -there is a word called --unrestricted means that anyone can start this entry and once we delete it
 -no one can start this entry unless the superusers 
--if you want to add user not in the superusers >> --users 'USER1'
+-if you want to add user not in the superusers >> --users USER1
+-----------------------------------------------------------------------
+----MAN Help----
