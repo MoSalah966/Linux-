@@ -390,6 +390,27 @@ vim /etc/grub.d/01_users
 cat << E0F
     set superusers="root"
     export superusers
-    password root "the copied encrypted pass"
+    password_pbkdf2 root "the copied encrypted pass"
 E0F
 :wq
+------------------
+-now we need just some users be able to open the OS 
+grub2-mkpasswd pbkdf2 
+xxxx
+xxxx
+-copy pass again 
+vim /etc/grub.d/01_users 
+#!/bin/sh -e 
+cat << E0F
+    set superusers="root"
+    export superusers
+    password_pbkdf2 root "the copied encrypted pass"
+    password_pbkdf2 USER1 "the copied encrypted pass"
+E0F
+:wq
+-here we add USER1 to the file to be able to open the OS like the root
+grub2-mkconfig -o /boot/grub2/grub.cfg #must regenerate again 
+vim /boot/grub2/grub.cfg 
+-there is a word called --unrestricted means that anyone can start this entry and once we delete it
+-no one can start this entry unless the superusers 
+-if you want to add user not in the superusers >> --users 'USER1'
