@@ -446,4 +446,4 @@ ctrlshift+   #make the font bigger in terminal
 ctrlshiftw   #close current tab in terminal 
 yum install bash-completion # to auto-complete with TAB 
 --------------------------------------------------------
----RAID---
+---RAID (redundant array of independent disks) ---
