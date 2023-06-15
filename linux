@@ -416,3 +416,9 @@ vim /boot/grub2/grub.cfg
 -if you want to add user not in the superusers >> --users USER1
 -----------------------------------------------------------------------
 ----MAN Help----
+- hashing # in the first of the line means you are root 
+- $ sign in the first of the line means you are user 
+man -k date #search in manual on date command 
+man -k raid #will guide you to mdadm in chapter 8
+man 8 mdadm  
+man -K raid  # list commands to choose from them which one will do the function you search for 
