@@ -429,3 +429,9 @@ space >> transport page to page
 /word # to search for word 
 n   # go to the next result
 N   # previous result 
+info nmcli  #like man command 
+whatis nmcli #what is its function 
+whereis nmcli # location of binary and man page files 
+-if you want to take sample of any service that is installed, you can take it from /usr/share/doc/ 
+--------------------------
+---history---
