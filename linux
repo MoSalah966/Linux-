@@ -447,3 +447,14 @@ ctrlshiftw   #close current tab in terminal
 yum install bash-completion # to auto-complete with TAB 
 --------------------------------------------------------
 ---RAID (redundant array of independent disks) ---
+-raid 0 is striping that means you add several disks to read and write from them with more spaces 
+-raid 1 is mirroring that means to make a replica and write is slow because write on number of disks at same time 
+-and read is the most fast one because it's replica 
+-raid5 is striping with distributed parity that means writing parity in one of three for example to can restore that one if it's deleted 
+-minimum numbers of disks in raid5 is 3 and it permits for one disk to fail to be able to restore 
+-if disk is missing data delete it and the system will create the data again from the array of data
+-raid 6 make two parities copies and it's better to choose even numbers of disks 
+-raid 10 is 1 and 0 so it's striping and mirroring. makes raid0 between two raid1 bond 
+-mdadm for multible disk administration tool > utility to create and manage RAID devices
+
+
