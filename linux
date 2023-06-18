@@ -456,5 +456,29 @@ yum install bash-completion # to auto-complete with TAB
 -raid 6 make two parities copies and it's better to choose even numbers of disks 
 -raid 10 is 1 and 0 so it's striping and mirroring. makes raid0 between two raid1 bond 
 -mdadm for multible disk administration tool > utility to create and manage RAID devices
+- to start partitioning with RAID you have to make sure they don't exist in fstab 
+cat /etc/fstab 
+lsblk          # to ensure there are no mounted new disks of the new added disks in fstab 
+mdadm --create /dev/md0 --level=5 --raid-devices=3 /dev/sdb /dev/sdc /dev/sdd 
+#create raid5 with 3 devices 
+cat /proc/mdstat #to follow the status of the array 
+- you can put a file system even when it's building RAID 
+mkfs.ext4 /dev/md0 
+mount /dev/md0 /media/
+-because it's RAID5 you can use size of two from the 3 devices 
+watch cat /proc/mdstat #live monitor every 2 seconds 
+mdadm /dev/md0 -a /dev/sdb #add a new disk to raid5
+umount /media/ #if you want to unuse RAID 
+mdadm --stop /dev/md0 #data will still available 
+mdadm --assemble --scan  #to reassemble RAID again and scan on the config file 
+vim /etc/fstab
+/dev/md0    /media  ext4    defaults    0   0
+:wq 
+-to check if there is a mistake in fstab syntax 
+umount /media/
+mount -a 
+df -h 
+-if we want to delete data after stopping RAID 
+mdadm --zero-superblock /dev/sdb
 
 
