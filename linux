@@ -510,4 +510,20 @@ df -h  #to check size
 ----LVM Logical Volume Management----
 -when assembling several logical volumes will be called volume group
 -so it makes several physical disks one logical and separate it as you like 
- 
+-need to format if there was RAID 
+dd if=/dev/zero of=/dev/sdb bs=1M count=1 
+dd if=/dev/zero of=/dev/sdc bs=1M count=1 
+dd if=/dev/zero of=/dev/sdd bs=1M count=1 
+-make LVM 
+fdisk /dev/sdb 
+m 
+n 
+p   #primary 
+1 
++5G 
+p  #print
+partprobe 
+pvcreate /dev/sdb1 /dev/sdv  #transfer from physical disk to physical volume 
+pvs  #physical volumes scan
+pvdisplay #more info  
+vgcreate data /dev/sdb1 /dev/sdc #volume group created called data 
