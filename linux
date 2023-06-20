@@ -484,3 +484,25 @@ mdadm --zero-superblock /dev/sdc
 mdadm --zero-superblock /dev/sdd #delete superblocks from disks so arrays cannot scan or assemble again 
 ---RAID on partitions---
 -take partitions from disks and assemble them together in a RAIDx 
+-working on spare disks 
+fdisk /dev/sdb 
+m 
+n 
+p   #primary 
+1 
++5G 
+p  #print
+m 
+t   #change partition system ID 
+l   #list all codes 
+fd  #to choose linux raid auto 
+w  #write 
+partprobe /dev/sdb
+-make same process for /dev/sdc 
+-make raid for two disks partitions 
+mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb1 /dev/sdc1 
+watch cat /proc/mdstat 
+mkfs.xfs /dev/md0 #make file system on md0 
+mount /dev/md0 /media/
+df -h  #to check size 
+-in RAID for partitions, it will use the smallest space for the added disks 
