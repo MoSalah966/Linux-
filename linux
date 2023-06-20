@@ -506,3 +506,8 @@ mkfs.xfs /dev/md0 #make file system on md0
 mount /dev/md0 /media/
 df -h  #to check size 
 -in RAID for partitions, it will use the smallest space for the added disks 
+---------------------------------------------------
+----LVM Logical Volume Management----
+-when assembling several logical volumes will be called volume group
+-so it makes several physical disks one logical and separate it as you like 
+ 
