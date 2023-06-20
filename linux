@@ -527,3 +527,8 @@ pvcreate /dev/sdb1 /dev/sdv  #transfer from physical disk to physical volume
 pvs  #physical volumes scan
 pvdisplay #more info  
 vgcreate data /dev/sdb1 /dev/sdc #volume group created called data 
+lvcreate --size 22G --name oracle data   #create logical volume oracle from group data with size 22
+mkfs.ext4 /dev/data/oracle #REMEMBER to create file system for LV and before mount 
+mkdir /oracle 
+mount /dev/data/oracle /oracle/ 
+df -h >> /dev/mapper/data-oracle  22G 45M 21G 1% /oracle #result 
