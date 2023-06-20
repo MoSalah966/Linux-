@@ -479,6 +479,8 @@ umount /media/
 mount -a 
 df -h 
 -if we want to delete data after stopping RAID 
-mdadm --zero-superblock /dev/sdb
-
-
+mdadm --zero-superblock /dev/sdb 
+mdadm --zero-superblock /dev/sdc 
+mdadm --zero-superblock /dev/sdd #delete superblocks from disks so arrays cannot scan or assemble again 
+---RAID on partitions---
+-take partitions from disks and assemble them together in a RAIDx 
