@@ -532,3 +532,12 @@ mkfs.ext4 /dev/data/oracle #REMEMBER to create file system for LV and before mou
 mkdir /oracle 
 mount /dev/data/oracle /oracle/ 
 df -h >> /dev/mapper/data-oracle  22G 45M 21G 1% /oracle #result 
+less /etc/lvm/lvm.conf   #conf file for LVM 
+less /etc/lvm/backup/data  #we can restore deleted LVM volumes from here 
+---------------------------------------------------------------------------
+-how to extend shrink cache mirroring speed thinbools snapshots for LVM (comming next)
+lvremove /dev/data/oracle  #delete the logical volume
+vgremove data #delete the volume group 
+pvremove /dev/sdb1 /dev/sdc 
+-to shring or delete, make sure they are not mounted 
+pvremove /dev/sd[bce] #to delete them in one step 
