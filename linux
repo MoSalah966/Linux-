@@ -506,7 +506,7 @@ mkfs.xfs /dev/md0 #make file system on md0
 mount /dev/md0 /media/
 df -h  #to check size 
 -in RAID for partitions, it will use the smallest space for the added disks 
----------------------------------------------------
+------------------------------------------------------------------------------
 ----LVM Logical Volume Management----
 -when assembling several logical volumes will be called volume group
 -so it makes several physical disks one logical and separate it as you like 
@@ -549,5 +549,32 @@ mkfs.ext4 /dev/data/oracle
 mount /dev/data/oracle /data/
 -when we write pvremove it deletes metadata for LVM because it created when we write pvcreate 
 mdadm /dev/md0 -f /dev/sdb   #testing something by marking sdb fault disk in md0 
+----
 -extend and shrink size with LVM
 lvextend --size +5G /dev/data/oracle  #extend volume with 5G 
+-after extend it you have to make the filesystem feel the change in inode 
+-so we need to update the inode table 
+resize2fs /dev/data/oracle #to resize the filesystem and update the table 
+df -h  #to test >> give the new storage +5G
+-shrink the LVM by resize2fs then lvreduce 
+umount /data/ 
+e2fsck -f /dev/data/oracle #continue if there's no problem 
+resize2fs /dev/data/oracle 30G
+lvreduce -L -5G /dev/data/oracle 
+mount /dev/data/oracle /data/
+df -h #to test 
+--------
+-striping LVM is to write on all disks at the same time 
+umount /data/
+lvremove /dev/data/oracle 
+vgremove data 
+pvremove /dev/md0 
+pvremove /dev/md1 
+cat /proc/mdstat
+mdadm --stop /dev/md0 
+mdadm --stop /dev/md1 
+mdadm --zero-superblock /dev/sdb /dev/sdc /dev/sde /dev/sdd 
+pvcreate /dev/sd[bcde]
+vgcreate data /dev/sd[bcde]
+lvcreate --size 40G --name oracle -i 4 data #stripe to 4 disks 
+lvdisplay -m /dev/data/oracle #show the mapping for the data (useful in striping)
