@@ -540,4 +540,14 @@ lvremove /dev/data/oracle  #delete the logical volume
 vgremove data #delete the volume group 
 pvremove /dev/sdb1 /dev/sdc 
 -to shring or delete, make sure they are not mounted 
-pvremove /dev/sd[bce] #to delete them in one step 
+pvremove /dev/sd[bce] #to delete them in one step  
+-if there is raid on disk we make LVM above RAID like:
+pvcreate /dev/md[01]  #make physical volume from md0 and md1
+vgcreate data /dev/md[01]
+lvcreate --size=30G --name oracle data 
+mkfs.ext4 /dev/data/oracle 
+mount /dev/data/oracle /data/
+-when we write pvremove it deletes metadata for LVM because it created when we write pvcreate 
+mdadm /dev/md0 -f /dev/sdb   #testing something by marking sdb fault disk in md0 
+-extend and shrink size with LVM
+lvextend --size +5G /dev/data/oracle  #extend volume with 5G 
