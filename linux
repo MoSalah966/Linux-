@@ -578,3 +578,18 @@ pvcreate /dev/sd[bcde]
 vgcreate data /dev/sd[bcde]
 lvcreate --size 40G --name oracle -i 4 data #stripe to 4 disks 
 lvdisplay -m /dev/data/oracle #show the mapping for the data (useful in striping)
+dmsetup deps /dev/data/oracle #show dependencies for the striped disks 
+mkfs.ext4 /dev/data/oracle
+mount /dev/data/oracle /data 
+----
+LVM snapshot 
+cp -r /etc/ /data/
+du -sh /data/ 
+lvcreate --size 2G --name oracle-snap --snapshot /dev/data/oracle #take snapshot from LVM 
+-revert snapshot
+umount /data/
+df -h  #make sure it's not mounted in another path 
+lvconvert --merge /dev/data/oracle-snap #revert from snapshot 
+mount /dev/data/oracle /data 
+df -h 
+---
