@@ -593,3 +593,9 @@ lvconvert --merge /dev/data/oracle-snap #revert from snapshot
 mount /dev/data/oracle /data 
 df -h 
 ---
+-auto-resize for snapshots 
+vim /etc/lvm/lvm.conf 
+/snapshot 
+snapshot_autoextend_threshold = 85  #make it 85 instead of 100 because it means disable autoextention 
+snapshot_autoextend_percent = 20  #extend with 20% 
+--------------------
