@@ -598,4 +598,40 @@ vim /etc/lvm/lvm.conf
 /snapshot 
 snapshot_autoextend_threshold = 85  #make it 85 instead of 100 because it means disable autoextention 
 snapshot_autoextend_percent = 20  #extend with 20% 
---------------------
+----------------------------------------------------------------
+---SWAP---
+-swap on partition
+free -m #to check memory and swap 
+cat /proc/swaps #show system info about swap 
+lvcreate --size 2G --name lvswap data 
+mkswap /dev/data/lvswap  #make swap 
+swapon /dev/data/lvswap  #activate swap
+vim /etc/fstab
+/dev/data/lvswap    swap        swap        defaults    0 0
+:wq
+mount -a 
+- to deactivate swap delete it from fstab then 
+swapoff /dev/data/lvswap
+------
+-make swap from file that exist
+dd if=/dev/zero of=/root/myswap bs=1M count=2048 #make a file with 2G blocks of zeroes 
+-make a swap from this file system that is formatted (filled with zeroes)
+mkswap /root/myswap 
+swapon /root/myswap 
+---------------------------------------------------------------
+///QUOTA MANAGEMENT///
+lsof /data/   #show the opened files from the path (used process)
+-quota is disabled by default 
+umount /data/  #always un mount the disk that you will work on 
+mount -o usrquota,grpquota /dev/data/oracle /data/ #mount with option userquota and groupquota
+vim /etc/fstab
+/dev/data/oracle    /data   ext4    defaults,usrquota,grpquota  0 0 
+:wq 
+mount -a 
+- build quota database 
+quotacheck -cvug /data #c for create, v for verbose, u for user, g for group 
+quotaon /data/  #to enable quota 
+edquota -u user1 #edit quota for user1
+-you can edit soft limit for example to 100000 aka 100M and hard limit to 200000
+repquota /data/ #won't show user1 until user1 write and use something from quota 
+-file limits in edqouta file is for file numbers the user can make 
