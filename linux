@@ -635,3 +635,12 @@ edquota -u user1 #edit quota for user1
 -you can edit soft limit for example to 100000 aka 100M and hard limit to 200000
 repquota /data/ #won't show user1 until user1 write and use something from quota 
 -file limits in edqouta file is for file numbers the user can make 
+edqouta -g dcadmins #if you want to applicate the edit on dcadmins group 
+-the grace period is the time when you exceed it on the soft limit, system will treat you like you
+-exceed the hard limit 
+edquota -T user1  #to applicate grace period on a user 
+-to update info 
+quotaoff /data/
+quotacheck -vug  #to update after modifications
+quota on /data/
+-------------------------------------------------------
