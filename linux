@@ -644,3 +644,29 @@ quotaoff /data/
 quotacheck -vug  #to update after modifications
 quota on /data/
 -------------------------------------------------------
+---central authentication IPA---
+-IPA is for identity, policy, audit 
+-IPA include NTP DNS LDAP kerberos http/s GUI 
+nmcli connection delete eno03283 #delete the old profile and default setup and install new one to prepare the server
+nmtui #to add new ethernet connection 
+yum search ipa-server  #searching for the package 
+yum install ipa-server -y
+-on the client server 
+hostnamectl set-hostname client1.company.com 
+-on the main server
+vim /etc/hosts 
+mainserverip  server.company.com    server 
+clientip      client1.company.com   client1 
+:wq 
+scp /etc/hosts client1:/etc/   #make secure copy of hosts on client1 in etc 
+ipa-server-install   #script to install ipa server 
+#fill the configuration 
+kinit admin  #enter pass for admin to login to kerberos server with admin rule 
+klist 
+ipactl status 
+ipa user-add
+ipa passwd **** 
+-on the client server 
+ipa-client-install #will ask about domain and ipa server name 
+-on ipa server 
+authconfig --enablemkhomedir --update   #to make home directory
