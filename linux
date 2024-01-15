@@ -670,3 +670,15 @@ ipa passwd ****
 ipa-client-install #will ask about domain and ipa server name 
 -on ipa server 
 authconfig --enablemkhomedir --update   #to make home directory
+
+
+-----------------------------
+firewall-cmd --add-service=ftp   # to allow ftp port on the firewall 
+firewall-cmd --add-service=ftp   # keep this conf even after reboot 
+less /etc/sysconfig/network-scripts/ifcfg-....   # to check if there is DHCP connection or not 
+ps aux | grep -i dhcp # to show lib dir for dhcp
+cat /var/lib/NetworkManager/dhclient-ens33.lease  #to check if this machine taking a dhcp client or not if it's working with network manager
+less /var/lib/dhclient/dhcp.lease                   #to check if this machine taking a dhcp client or not if it's not working with network manager
+#############################################################################
+tailf /var/log/messages  # to see events that happen at the moment
+#############################################################################
