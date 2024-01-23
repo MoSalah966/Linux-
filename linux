@@ -680,5 +680,18 @@ ps aux | grep -i dhcp # to show lib dir for dhcp
 cat /var/lib/NetworkManager/dhclient-ens33.lease  #to check if this machine taking a dhcp client or not if it's working with network manager
 less /var/lib/dhclient/dhcp.lease                   #to check if this machine taking a dhcp client or not if it's not working with network manager
 #############################################################################
-tailf /var/log/messages  # to see events that happen at the moment
+tailf /var/log/messages  # to see events that happen at the moment and to see discover, offer, request and ack messages for DHCP 
 #############################################################################
+Apache Web Server 
+
+# you have to choose only the packages that you need with apache so if you will work with python, don't install the PHP packages
+yum install httpd 
+# on debian or ubuntu the apache service named apache2 not httpd 
+yum grouplist 
+# you will find a yum group named Basic Web Server 
+yum groupinstall "Basic Web Server"
+yum search python | less 
+firewall-cmd --add-service=http --permanent 
+#apache host its files from /var/www/html 
+# main conf file in /etc/httpd/conf/httpd.conf 
+# the first part in the file contains the main server conf and the second part contains the virtual host (another servers) conf 
