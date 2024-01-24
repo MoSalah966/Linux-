@@ -695,3 +695,5 @@ firewall-cmd --add-service=http --permanent
 #apache host its files from /var/www/html 
 # main conf file in /etc/httpd/conf/httpd.conf 
 # the first part in the file contains the main server conf and the second part contains the virtual host (another servers) conf 
+#ServerAdmin we can named it support@itcompany.com 
+#ServerName www.companyname.com 
